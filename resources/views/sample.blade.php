@@ -1,3 +1,3 @@
 <div>
-    Hello New Page!
+    Sampleページです！
 </div>
