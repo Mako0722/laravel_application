@@ -11,13 +11,13 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
-
+        $posts = Post::orderBy('created_at', 'desc')->paginate(5);
         return view('posts.index',['posts'=>$posts]);
     }
 
     public function create()
     {
+        dd('投稿画面だよ！！');
         return view('posts.create');
     }
 
@@ -45,6 +45,7 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
+        dd('編集しようとした投稿データの情報');
         if ($post->user_id !== Auth::id()){
             return redirect('/');
         }
