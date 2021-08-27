@@ -44,11 +44,12 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-
-        dd('編集しようとした投稿データの情報');
         if ($post->user_id !== Auth::id()){
             return redirect('/');
         }
+
+        dd($post);
+    
 
         return view('posts.edit',['post' => $post]);
     }
